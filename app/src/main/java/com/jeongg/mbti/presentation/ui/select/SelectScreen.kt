@@ -1,10 +1,12 @@
 package com.jeongg.mbti.presentation.ui.select
 
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -32,19 +34,16 @@ fun SelectScreen(
     viewModel: SelectViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
-    LaunchedEffect(key1 = true){
-        viewModel.eventFlow.collectLatest{ event ->
-            when(event){
-                is UiEvent.SUCCESS -> { "질문 목록 조회 성공 in Screen".log() }
-                is UiEvent.ERROR -> Toast.makeText(context, event.message, Toast.LENGTH_SHORT).show()
-                else -> { "로딩중".log() }
-            }
-        }
+
+    BackHandler {
+        onPrevious()
     }
+
     if (state.questions.isNotEmpty()) {
         Column(
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .padding(horizontal = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Spacer(modifier = Modifier.height(72.dp))

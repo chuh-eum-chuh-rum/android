@@ -3,6 +3,7 @@
 package com.jeongg.mbti.presentation.ui.select
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -16,12 +17,18 @@ import androidx.compose.animation.with
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import com.jeongg.mbti.data.util.log
 import com.jeongg.mbti.presentation.theme.MbtiTheme
+import com.jeongg.mbti.presentation.ui.result.SearchResultActivity
 import com.jeongg.mbti.presentation.ui.select.component.TopBar
+import com.jeongg.mbti.presentation.ui.util.UiEvent
+import com.jeongg.mbti.presentation.util.rememberToast
+import com.jeongg.mbti.presentation.util.startActivityWithAnimation
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
 @OptIn(ExperimentalFoundationApi::class)
 @AndroidEntryPoint
@@ -34,9 +41,28 @@ class SelectActivity : ComponentActivity() {
         setContent {
 
             val state = vm.state.collectAsState().value
-            val pagerState = rememberPagerState {
-                state.step
+            val toast = rememberToast()
+
+            LaunchedEffect(key1 = vm.eventFlow) {
+                vm.eventFlow.collectLatest { event ->
+                    when (event) {
+                        is UiEvent.SUCCESS -> {
+                            "질문 목록 조회 성공 in Screen".log()
+                        }
+
+                        is UiEvent.ERROR -> toast.invoke(event.message)
+
+                        is UiEvent.NavigateToResult -> {
+                            startActivityWithAnimation<SearchResultActivity>()
+                        }
+
+                        else -> {
+                            "로딩중".log()
+                        }
+                    }
+                }
             }
+
             MbtiTheme {
                 Column(
                     modifier = Modifier.fillMaxSize()
