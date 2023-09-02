@@ -217,6 +217,7 @@ fun ShareResultImage(
             contentAlignment = Alignment.Center,
         ) {
             MbtiBody7(
+                modifier = Modifier.fillMaxWidth(),
                 text = description,
                 color = MbtiColor.Gray800,
                 align = TextAlign.Center,
