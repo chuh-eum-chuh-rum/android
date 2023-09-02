@@ -31,7 +31,6 @@ fun StartScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Spacer(modifier = Modifier.height(80.dp))
         Text(
             text = "내 여행 MBTI는 뭘까?",
             style = MbtiTextStyle.Body1,

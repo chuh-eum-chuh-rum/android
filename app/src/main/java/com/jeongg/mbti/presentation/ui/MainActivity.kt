@@ -34,7 +34,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
     private fun navigateToStart() {
         startActivityWithAnimation<StartActivity>()
     }

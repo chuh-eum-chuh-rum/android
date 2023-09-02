@@ -47,9 +47,7 @@ class SelectViewModel @Inject constructor(
             if (response.isEmpty()) {
                 _eventFlow.emit(UiEvent.ERROR("질문을 불러오는데 실패하였습니다."))
             } else {
-                _state.update {
-                    it.copy(questions = response)
-                }
+                _state.update { it.copy(questions = response) }
                 _eventFlow.emit(UiEvent.SUCCESS)
             }
         }
