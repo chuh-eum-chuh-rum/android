@@ -1,4 +1,4 @@
-package com.jeongg.mbti.ui.theme
+package com.jeongg.mbti.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
