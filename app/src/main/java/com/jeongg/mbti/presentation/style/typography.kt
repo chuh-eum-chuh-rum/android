@@ -31,73 +31,73 @@ internal val pretendardFamily = FontFamily(
 
 internal object MbtiTextStyle {
     val Title1 = TextStyle(
-        color = SMonkeyColor.Black,
+        color = MbtiColor.Black,
         fontSize = 20.sp,
         fontWeight = FontWeight.SemiBold,
         fontFamily = pretendardFamily,
     )
     val Title2 = TextStyle(
-        color = SMonkeyColor.Black,
+        color = MbtiColor.Black,
         fontSize = 20.sp,
         fontWeight = FontWeight.Normal,
         fontFamily = pretendardFamily,
     )
     val Body1 = TextStyle(
-        color = SMonkeyColor.Black,
+        color = MbtiColor.Black,
         fontSize = 18.sp,
         fontWeight = FontWeight.SemiBold,
         fontFamily = pretendardFamily,
     )
     val Body2 = TextStyle(
-        color = SMonkeyColor.Black,
+        color = MbtiColor.Black,
         fontSize = 18.sp,
         fontWeight = FontWeight.Normal,
         fontFamily = pretendardFamily,
     )
     val Body3 = TextStyle(
-        color = SMonkeyColor.Black,
+        color = MbtiColor.Black,
         fontSize = 16.sp,
         fontWeight = FontWeight.SemiBold,
         fontFamily = pretendardFamily,
     )
     val Body4 = TextStyle(
-        color = SMonkeyColor.Black,
+        color = MbtiColor.Black,
         fontSize = 16.sp,
         fontWeight = FontWeight.Normal,
         fontFamily = pretendardFamily,
     )
     val Body5 = TextStyle(
-        color = SMonkeyColor.Black,
+        color = MbtiColor.Black,
         fontSize = 14.sp,
         fontWeight = FontWeight.SemiBold,
         fontFamily = pretendardFamily,
     )
     val Body6 = TextStyle(
-        color = SMonkeyColor.Black,
+        color = MbtiColor.Black,
         fontSize = 14.sp,
         fontWeight = FontWeight.Normal,
         fontFamily = pretendardFamily,
     )
     val Body7 = TextStyle(
-        color = SMonkeyColor.Black,
+        color = MbtiColor.Black,
         fontSize = 12.sp,
         fontWeight = FontWeight.SemiBold,
         fontFamily = pretendardFamily,
     )
     val Body8 = TextStyle(
-        color = SMonkeyColor.Black,
+        color = MbtiColor.Black,
         fontSize = 12.sp,
         fontWeight = FontWeight.Normal,
         fontFamily = pretendardFamily,
     )
     val Body9 = TextStyle(
-        color = SMonkeyColor.Black,
+        color = MbtiColor.Black,
         fontSize = 10.sp,
         fontWeight = FontWeight.SemiBold,
         fontFamily = pretendardFamily,
     )
     val Body10 = TextStyle(
-        color = SMonkeyColor.Black,
+        color = MbtiColor.Black,
         fontSize = 10.sp,
         fontWeight = FontWeight.Normal,
         fontFamily = pretendardFamily,
@@ -109,7 +109,7 @@ fun MbtiTitle1(
     modifier: Modifier = Modifier,
     padding: PaddingValues? = null,
     text: String,
-    color: Color = SMonkeyColor.Black,
+    color: Color = MbtiColor.Black,
     align: TextAlign = TextAlign.Start,
     rippleEnabled: Boolean = false,
     overflow: TextOverflow = TextOverflow.Ellipsis,
@@ -140,7 +140,7 @@ fun MbtiTitle2(
     modifier: Modifier = Modifier,
     padding: PaddingValues? = null,
     text: String,
-    color: Color = SMonkeyColor.Black,
+    color: Color = MbtiColor.Black,
     align: TextAlign = TextAlign.Start,
     rippleEnabled: Boolean = false,
     overflow: TextOverflow = TextOverflow.Ellipsis,
@@ -172,7 +172,7 @@ fun MbtiBody1(
     modifier: Modifier = Modifier,
     padding: PaddingValues? = null,
     text: String,
-    color: Color = SMonkeyColor.Black,
+    color: Color = MbtiColor.Black,
     align: TextAlign = TextAlign.Start,
     rippleEnabled: Boolean = false,
     overflow: TextOverflow = TextOverflow.Ellipsis,
@@ -204,7 +204,7 @@ fun MbtiBody2(
     modifier: Modifier = Modifier,
     padding: PaddingValues? = null,
     text: String,
-    color: Color = SMonkeyColor.Black,
+    color: Color = MbtiColor.Black,
     align: TextAlign = TextAlign.Start,
     rippleEnabled: Boolean = false,
     overflow: TextOverflow = TextOverflow.Ellipsis,
@@ -236,7 +236,7 @@ fun MbtiBody3(
     modifier: Modifier = Modifier,
     padding: PaddingValues? = null,
     text: String,
-    color: Color = SMonkeyColor.Black,
+    color: Color = MbtiColor.Black,
     align: TextAlign = TextAlign.Start,
     rippleEnabled: Boolean = false,
     overflow: TextOverflow = TextOverflow.Ellipsis,
@@ -268,7 +268,7 @@ fun MbtiBody4(
     modifier: Modifier = Modifier,
     padding: PaddingValues? = null,
     text: String,
-    color: Color = SMonkeyColor.Black,
+    color: Color = MbtiColor.Black,
     align: TextAlign = TextAlign.Start,
     rippleEnabled: Boolean = false,
     overflow: TextOverflow = TextOverflow.Ellipsis,
@@ -300,7 +300,7 @@ fun MbtiBody5(
     modifier: Modifier = Modifier,
     padding: PaddingValues? = null,
     text: String,
-    color: Color = SMonkeyColor.Black,
+    color: Color = MbtiColor.Black,
     align: TextAlign = TextAlign.Start,
     rippleEnabled: Boolean = false,
     overflow: TextOverflow = TextOverflow.Ellipsis,
@@ -332,7 +332,7 @@ fun MbtiBody6(
     modifier: Modifier = Modifier,
     padding: PaddingValues? = null,
     text: String,
-    color: Color = SMonkeyColor.Black,
+    color: Color = MbtiColor.Black,
     align: TextAlign = TextAlign.Start,
     rippleEnabled: Boolean = false,
     overflow: TextOverflow = TextOverflow.Ellipsis,
@@ -364,7 +364,7 @@ fun MbtiBody7(
     modifier: Modifier = Modifier,
     padding: PaddingValues? = null,
     text: String,
-    color: Color = SMonkeyColor.Black,
+    color: Color = MbtiColor.Black,
     align: TextAlign = TextAlign.Start,
     rippleEnabled: Boolean = false,
     overflow: TextOverflow = TextOverflow.Ellipsis,
@@ -396,7 +396,7 @@ fun MbtiBody8(
     modifier: Modifier = Modifier,
     padding: PaddingValues? = null,
     text: String,
-    color: Color = SMonkeyColor.Black,
+    color: Color = MbtiColor.Black,
     align: TextAlign = TextAlign.Start,
     rippleEnabled: Boolean = false,
     overflow: TextOverflow = TextOverflow.Ellipsis,
@@ -428,7 +428,7 @@ fun MbtiBody9(
     modifier: Modifier = Modifier,
     padding: PaddingValues? = null,
     text: String,
-    color: Color = SMonkeyColor.Black,
+    color: Color = MbtiColor.Black,
     align: TextAlign = TextAlign.Start,
     rippleEnabled: Boolean = false,
     overflow: TextOverflow = TextOverflow.Ellipsis,
@@ -460,7 +460,7 @@ fun MbtiBody10(
     modifier: Modifier = Modifier,
     padding: PaddingValues? = null,
     text: String,
-    color: Color = SMonkeyColor.Black,
+    color: Color = MbtiColor.Black,
     align: TextAlign = TextAlign.Start,
     rippleEnabled: Boolean = false,
     overflow: TextOverflow = TextOverflow.Ellipsis,

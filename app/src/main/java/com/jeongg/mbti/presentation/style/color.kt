@@ -3,7 +3,7 @@ package com.jeongg.mbti.presentation.style
 import androidx.compose.ui.graphics.Color
 
 
-object SMonkeyColor {
+object MbtiColor {
     val Purple80 = Color(0xFFD0BCFF)
     val PurpleGrey80 = Color(0xFFCCC2DC)
     val Pink80 = Color(0xFFEFB8C8)
@@ -12,10 +12,10 @@ object SMonkeyColor {
     val PurpleGrey40 = Color(0xFF625b71)
     val Pink40 = Color(0xFF7D5260)
 
-    val Main1 = Color(0xFF27B062)
-    val Main2 = Color(0xFF3AC676)
-    val Main3 = Color(0xFF9EDDB9)
-    val Main4 = Color(0xFFC1F1D6)
+    val Green1 = Color(0xFF27B062)
+    val Green2 = Color(0xFF3AC676)
+    val Green3 = Color(0xFF9EDDB9)
+    val Green4 = Color(0xFFC1F1D6)
 
     val Black = Color.Black
     val Gray900 = Color(0xFF343434)
