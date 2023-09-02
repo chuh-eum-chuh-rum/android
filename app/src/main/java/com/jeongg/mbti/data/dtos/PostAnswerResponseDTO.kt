@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 data class PostAnswerResponseDTO(
     val mbtiTitle: String,
     val mbtiContents: String,
-    val toBoldContent: List<String>,
+    val toBoldContent: String,
     val imagePath: String,
     val goodMbti: MbtiDTO,
-    val badMbti: MbtiDTO
+    val badMBTI: MbtiDTO
 )

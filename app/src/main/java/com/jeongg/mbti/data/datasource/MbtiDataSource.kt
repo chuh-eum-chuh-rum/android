@@ -10,13 +10,16 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.post
+import io.ktor.client.request.setBody
 
 class MbtiDataSource(
     private val client: HttpClient
 ): MbtiService {
 
     override suspend fun postAnswer(postAnswerRequestDTO: PostAnswerRequestDTO): PostAnswerResponseDTO? {
-        return client.post(HttpRoutes.POST_ANSWER).body()
+        return client.post(HttpRoutes.POST_ANSWER){
+            setBody(postAnswerRequestDTO)
+        }.body()
     }
 
     override suspend fun getQuestions(): List<QuestionDTO> {
