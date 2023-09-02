@@ -2,12 +2,9 @@ package com.jeongg.mbti.di
 
 import android.content.Context
 import android.util.Log
-import com.jeongg.mbti.data.datasource.ResultDataSource
-import com.jeongg.mbti.data.datasource.SelectDataSource
-import com.jeongg.mbti.data.repository.ResultRepository
-import com.jeongg.mbti.data.repository.SelectRepository
-import com.jeongg.mbti.data.service.ResultService
-import com.jeongg.mbti.data.service.SelectService
+import com.jeongg.mbti.data.datasource.MbtiDataSource
+import com.jeongg.mbti.data.repository.MbtiRepository
+import com.jeongg.mbti.data.service.MbtiService
 import com.jeongg.mbti.data.util.HttpRoutes
 import dagger.Module
 import dagger.Provides
@@ -70,22 +67,13 @@ class NetworkModule {
     }
     @Provides
     @Singleton
-    fun provideSelectService(client: HttpClient): SelectService {
-        return SelectDataSource(client)
+    fun provideMbtiService(client: HttpClient): MbtiService {
+        return MbtiDataSource(client)
     }
     @Provides
     @Singleton
-    fun provideSelectRepository(service: SelectService): SelectRepository {
-        return SelectRepository(service)
+    fun provideSelectRepository(service: MbtiService): MbtiRepository {
+        return MbtiRepository(service)
     }
-    @Provides
-    @Singleton
-    fun provideResultService(client: HttpClient): ResultService {
-        return ResultDataSource(client)
-    }
-    @Provides
-    @Singleton
-    fun provideResultRepository(service: ResultService): ResultRepository {
-        return ResultRepository(service)
-    }
+
 }
