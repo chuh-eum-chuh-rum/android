@@ -24,6 +24,7 @@ import com.jeongg.mbti.data.util.log
 import com.jeongg.mbti.presentation.theme.MbtiTheme
 import com.jeongg.mbti.presentation.ui.result.SearchResultActivity
 import com.jeongg.mbti.presentation.ui.select.component.TopBar
+import com.jeongg.mbti.presentation.ui.util.Extras
 import com.jeongg.mbti.presentation.ui.util.UiEvent
 import com.jeongg.mbti.presentation.util.rememberToast
 import com.jeongg.mbti.presentation.util.startActivityWithAnimation
@@ -53,7 +54,12 @@ class SelectActivity : ComponentActivity() {
                         is UiEvent.ERROR -> toast.invoke(event.message)
 
                         is UiEvent.NavigateToResult -> {
-                            startActivityWithAnimation<SearchResultActivity>()
+
+                            startActivityWithAnimation<SearchResultActivity>(
+                                intentBuilder = {
+                                    putExtra(Extras.ANSWER, event.answer.joinToString(separator = ","))
+                                }
+                            )
                         }
 
                         else -> {

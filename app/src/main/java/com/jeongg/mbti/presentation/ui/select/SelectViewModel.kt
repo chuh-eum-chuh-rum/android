@@ -61,7 +61,7 @@ class SelectViewModel @Inject constructor(
 
     fun navigateToNextProblem(selectIndex: Int) = viewModelScope.launch {
         if (currentState.step == PROBLEM_TOTAL - 1) {
-            _eventFlow.emit(UiEvent.NavigateToResult)
+            _eventFlow.emit(UiEvent.NavigateToResult(currentState.answers))
             return@launch
         }
         addSelectIndex(selectIndex = selectIndex)

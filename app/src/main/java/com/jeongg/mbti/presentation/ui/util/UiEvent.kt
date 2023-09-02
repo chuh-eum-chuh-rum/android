@@ -4,5 +4,5 @@ sealed class UiEvent {
     object SUCCESS: UiEvent()
     object LOADING: UiEvent()
     data class ERROR(val message: String): UiEvent()
-    object NavigateToResult: UiEvent()
+    data class NavigateToResult(val answer: List<String>): UiEvent()
 }
