@@ -9,5 +9,5 @@ data class PostAnswerResponseDTO(
     val toBoldContent: String,
     val imagePath: String,
     val goodMbti: MbtiDTO,
-    val badMBTI: MbtiDTO
+    val badMbti: MbtiDTO
 )

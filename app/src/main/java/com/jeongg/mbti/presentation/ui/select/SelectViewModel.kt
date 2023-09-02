@@ -86,7 +86,6 @@ class SelectViewModel @Inject constructor(
         }
     }
     private fun addSelectIndex(selectIndex: Int) {
-
         val newSelectIndex = currentState.selectIndex.toMutableList().apply {
             add(selectIndex)
         }
@@ -105,7 +104,7 @@ class SelectViewModel @Inject constructor(
         val step = _state.value.step
         when(index){
             1 -> _state.value.answers[step] = _state.value.questions[step].answer1.mbtiType
-            2 -> _state.value.answers[step] = _state.value.questions[step].answer1.mbtiType
+            2 -> _state.value.answers[step] = _state.value.questions[step].answer2.mbtiType
         }
     }
 

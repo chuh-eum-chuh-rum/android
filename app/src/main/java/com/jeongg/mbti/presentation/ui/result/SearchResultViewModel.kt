@@ -27,14 +27,16 @@ class SearchResultViewModel @Inject constructor(
         val answers = getAnswer()
         postAnswer(answers)
     }
+
     private fun getAnswer(): List<String> {
         return try {
             val answers = saveAsHandle.getStateFlow(Extras.ANSWER, "").value
             answers.split(",")
-        } catch(e: Exception){
+        } catch (e: Exception) {
             emptyList()
         }
     }
+
     private val _state = MutableStateFlow(SearchResultState())
     val state: StateFlow<SearchResultState> = _state.asStateFlow()
 
@@ -43,30 +45,27 @@ class SearchResultViewModel @Inject constructor(
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow
 
-    private fun postAnswer(answerList: List<String>){
+    private fun postAnswer(answerList: List<String>) {
         viewModelScope.launch {
-            answerList.forEach{
-                "answer : $it".log()
-            }
-            val response = mbtiRepository.postAnswer(PostAnswerRequestDTO(answerList))
-            if (response == null) {
-                _eventFlow.emit(UiEvent.ERROR("결과를 불러오는데 실패하였습니다."))
-            }
-            else {
-                _state.update{
+            kotlin.runCatching {
+                mbtiRepository.postAnswer(PostAnswerRequestDTO(answerList))
+            }.onSuccess { item ->
+                _state.update {
                     it.copy(
-                        title = it.title,
-                        imageRes = it.imageRes,
-                        description = it.description,
-                        likeTitle = it.likeTitle,
-                        likeImageRes = it.likeImageRes,
-                        likeDescription = it.likeDescription,
-                        dislikeTitle = it.dislikeTitle,
-                        dislikeImageRes = it.dislikeImageRes,
-                        dislikeDescription = it.dislikeDescription,
+                        title = item?.mbtiTitle ?: "",
+                        imageRes = item?.imagePath ?: "",
+                        description = item?.mbtiContents ?: "",
+                        likeTitle = item?.goodMbti?.mbtiTitle ?: "",
+                        likeImageRes = item?.goodMbti?.imagePath ?: "",
+                        likeDescription = "",
+                        dislikeTitle = item?.badMbti?.mbtiTitle ?: "",
+                        dislikeImageRes = item?.badMbti?.imagePath ?: "",
+                        dislikeDescription = "",
                     )
                 }
                 _eventFlow.emit(UiEvent.SUCCESS)
+            }.onFailure {
+                _eventFlow.emit(UiEvent.ERROR("결과를 불러오는데 실패하였습니다."))
             }
         }
     }

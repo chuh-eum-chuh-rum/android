@@ -29,6 +29,7 @@ fun StartScreen(
             .padding(horizontal = 16.dp)
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
     ) {
         Spacer(modifier = Modifier.height(80.dp))
         Text(

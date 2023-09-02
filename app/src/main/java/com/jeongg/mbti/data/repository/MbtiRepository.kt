@@ -13,20 +13,15 @@ import javax.inject.Singleton
 @Singleton
 class MbtiRepository @Inject constructor(
     private val resultService: MbtiService
-){
+) {
     suspend fun postAnswer(postAnswerRequestDTO: PostAnswerRequestDTO): PostAnswerResponseDTO? {
-        return try {
-            resultService.postAnswer(postAnswerRequestDTO)
-        } catch(e: Exception) {
-            val error = getErrorMessage(e)
-            "[ERROR] postAnswer: ${error.second} ${error.first}".log()
-            null
-        }
+        return resultService.postAnswer(postAnswerRequestDTO)
     }
+
     suspend fun getQuestions(): List<QuestionDTO> {
         return try {
             resultService.getQuestions()
-        } catch(e: Exception){
+        } catch (e: Exception) {
             val error = getErrorMessage(e)
             "[ERROR] getQuestions: ${error.second} ${error.first}".log()
             emptyList()

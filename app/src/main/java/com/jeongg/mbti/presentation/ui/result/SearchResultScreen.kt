@@ -55,6 +55,7 @@ fun SearchResultScreen(
     val imageLoader =
         ImageLoader.Builder(context).allowHardware(false) // Disallow hardware bitmaps.
             .build()
+
     val imagePainter = rememberAsyncImagePainter(
         model = state.imageRes,
         imageLoader = imageLoader,
@@ -158,7 +159,7 @@ fun SearchResultScreen(
                 modifier = Modifier.padding(horizontal = 16.dp),
                 type = "같이 바캉스 가면 좋은 유형",
                 title = state.likeTitle,
-                imageRes = state.likeImageRes,
+                imageRes = likeImagePainter,
                 description = state.likeDescription,
             )
             Spacer(modifier = Modifier.height(24.dp))
@@ -166,7 +167,7 @@ fun SearchResultScreen(
                 modifier = Modifier.padding(horizontal = 16.dp),
                 type = "같이 바캉스 가면 안 맞을 수 있는 유형",
                 title = state.dislikeTitle,
-                imageRes = state.dislikeImageRes,
+                imageRes = disLikeImagePainter,
                 description = state.dislikeDescription,
                 titleColor = MbtiColor.Error,
             )
@@ -259,7 +260,7 @@ fun RelationMbti(
     modifier: Modifier = Modifier,
     type: String,
     title: String,
-    imageRes: String,
+    imageRes: Painter,
     description: String,
     titleColor: Color = MbtiColor.Green1,
 ) {
@@ -267,27 +268,14 @@ fun RelationMbti(
         modifier = modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        MbtiBody3(text = type, color = titleColor)
+        MbtiTitle1(text = type, color = titleColor)
         Spacer(modifier = Modifier.height(16.dp))
-        AsyncImage(
+        Image(
             modifier = Modifier.size(80.dp),
-            model = imageRes,
+            painter = imageRes,
             contentDescription = null,
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(8.dp))
-                .background(color = MbtiColor.Gray200)
-                .padding(all = 16.dp),
-        ) {
-            MbtiBody7(text = title)
-            Spacer(modifier = Modifier.height(4.dp))
-            MbtiBody9(
-                text = description,
-                align = TextAlign.Center
-            )
-        }
+        MbtiBody3(text = title, color = MbtiColor.Black)
     }
 }
