@@ -3,6 +3,7 @@ package com.jeongg.mbti.data.repository
 import com.jeongg.mbti.data.dtos.GetQuestionsDTO
 import com.jeongg.mbti.data.dtos.PostAnswerRequestDTO
 import com.jeongg.mbti.data.dtos.PostAnswerResponseDTO
+import com.jeongg.mbti.data.dtos.QuestionDTO
 import com.jeongg.mbti.data.service.MbtiService
 import com.jeongg.mbti.data.util.getErrorMessage
 import com.jeongg.mbti.data.util.log
@@ -22,13 +23,13 @@ class MbtiRepository @Inject constructor(
             null
         }
     }
-    suspend fun getQuestions(): GetQuestionsDTO? {
+    suspend fun getQuestions(): List<QuestionDTO> {
         return try {
             resultService.getQuestions()
         } catch(e: Exception){
             val error = getErrorMessage(e)
             "[ERROR] getQuestions: ${error.second} ${error.first}".log()
-            null
+            emptyList()
         }
     }
 }

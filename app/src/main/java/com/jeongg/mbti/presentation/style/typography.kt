@@ -132,7 +132,8 @@ fun MbtiTitle1(
             color = color,
             textAlign = align
         ),
-        overflow = overflow
+        overflow = overflow,
+        textAlign = TextAlign.Center
     )
 }
 @Composable
