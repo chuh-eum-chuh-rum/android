@@ -244,7 +244,7 @@ fun ShareResultImage(
             ) {
                 Image(
                     modifier = Modifier.size(80.dp),
-                    painter = likeImagePainter,
+                    painter = dislikeImagePainter,
                     contentDescription = null,
                 )
                 Spacer(modifier = Modifier.height(16.dp))
