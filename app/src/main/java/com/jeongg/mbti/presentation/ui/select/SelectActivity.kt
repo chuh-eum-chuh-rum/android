@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalAnimationApi::class)
+
 package com.jeongg.mbti.presentation.ui.select
 
 import android.os.Bundle
@@ -27,7 +29,6 @@ class SelectActivity : ComponentActivity() {
 
     private val vm: SelectViewModel by viewModels()
 
-    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -66,6 +67,9 @@ class SelectActivity : ComponentActivity() {
                             state = state,
                             onNextStep = { selectedIndex ->
                                 vm.navigateToNextProblem(selectedIndex)
+                            },
+                            onPrevious = {
+                                vm.minusStep()
                             }
                         )
                     }

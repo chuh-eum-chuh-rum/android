@@ -13,6 +13,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
+import io.ktor.client.engine.cio.endpoint
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.compression.ContentEncoding
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -31,14 +32,12 @@ import javax.inject.Singleton
 class NetworkModule {
     @Provides
     @Singleton
-    fun provideHttpClient(
-        @ApplicationContext context: Context
-    ): HttpClient {
+    fun provideHttpClient(): HttpClient {
         return HttpClient(CIO) {
             install(Logging) {
                 logger = object : Logger {
                     override fun log(message: String) {
-                        Log.d("ppap_api", message)
+                        Log.d("mbti_api", message)
                     }
                 }
                 level = LogLevel.ALL
@@ -51,9 +50,9 @@ class NetworkModule {
                 })
             }
             install(HttpTimeout) {
-                connectTimeoutMillis = 5000
-                requestTimeoutMillis = 5000
-                socketTimeoutMillis = 5000
+                connectTimeoutMillis = 7000
+                requestTimeoutMillis = 7000
+                socketTimeoutMillis = 7000
             }
             install(ContentEncoding) {
                 deflate(1.0F)

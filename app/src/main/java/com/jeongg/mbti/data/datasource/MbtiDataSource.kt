@@ -3,6 +3,7 @@ package com.jeongg.mbti.data.datasource
 import com.jeongg.mbti.data.dtos.GetQuestionsDTO
 import com.jeongg.mbti.data.dtos.PostAnswerRequestDTO
 import com.jeongg.mbti.data.dtos.PostAnswerResponseDTO
+import com.jeongg.mbti.data.dtos.QuestionDTO
 import com.jeongg.mbti.data.service.MbtiService
 import com.jeongg.mbti.data.util.HttpRoutes
 import io.ktor.client.HttpClient
@@ -17,7 +18,8 @@ class MbtiDataSource(
     override suspend fun postAnswer(postAnswerRequestDTO: PostAnswerRequestDTO): PostAnswerResponseDTO? {
         return client.post(HttpRoutes.POST_ANSWER).body()
     }
-    override suspend fun getQuestions(): GetQuestionsDTO? {
+
+    override suspend fun getQuestions(): List<QuestionDTO> {
         return client.get(HttpRoutes.GET_QUESTIONS).body()
     }
 }
