@@ -2,7 +2,6 @@ package com.jeongg.mbti.presentation.ui.select
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jeongg.mbti.data.dtos.GetQuestionsDTO
 import com.jeongg.mbti.data.dtos.QuestionDTO
 import com.jeongg.mbti.data.repository.MbtiRepository
 import com.jeongg.mbti.presentation.ui.util.UiEvent
@@ -21,7 +20,7 @@ data class SelectState(
     val maxStep: Int = PROBLEM_TOTAL,
     val step: Int = 0,
     val selectIndex: List<Int> = emptyList(),
-    val answers: List<String> = List(12) { "" },
+    val answers: List<String> = List(PROBLEM_TOTAL) { "" },
     val questions: List<QuestionDTO> = emptyList()
 )
 
@@ -40,28 +39,33 @@ class SelectViewModel @Inject constructor(
     init {
         getQuestions()
     }
-    private fun getQuestions(){
+
+    private fun getQuestions() {
         viewModelScope.launch {
             _eventFlow.emit(UiEvent.LOADING)
             val response = mbtiRepository.getQuestions()
             if (response.isEmpty()) {
                 _eventFlow.emit(UiEvent.ERROR("질문을 불러오는데 실패하였습니다."))
-            }
-            else {
-                _state.update{
+            } else {
+                _state.update {
                     it.copy(questions = response)
                 }
                 _eventFlow.emit(UiEvent.SUCCESS)
             }
         }
     }
-    fun addAnswer(index: Int){
+
+    fun addAnswer(index: Int) {
         _state.value = _state.value.copy()
     }
-    fun navigateToNextProblem(selectIndex: Int) {
+
+    fun navigateToNextProblem(selectIndex: Int) = viewModelScope.launch {
+        if (currentState.step == PROBLEM_TOTAL - 1) {
+            _eventFlow.emit(UiEvent.NavigateToResult)
+            return@launch
+        }
         addSelectIndex(selectIndex = selectIndex)
         plusStep()
-        if (currentState.step == PROBLEM_TOTAL) navigateToResultScreen()
     }
 
     fun minusStep() {
@@ -69,6 +73,7 @@ class SelectViewModel @Inject constructor(
             it.copy(step = currentState.step.minus(1))
         }
     }
+
     private fun plusStep() {
         _state.update {
             it.copy(

@@ -128,6 +128,7 @@ fun SearchResultScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(12.dp))
+                    .padding(horizontal = 16.dp)
                     .background(
                         color = MbtiColor.Gray200
                     )
@@ -143,6 +144,7 @@ fun SearchResultScreen(
             Divider()
             Spacer(modifier = Modifier.height(24.dp))
             RelationMbti(
+                modifier = Modifier.padding(horizontal = 16.dp),
                 type = "같이 바캉스 가면 좋은 유형",
                 title = state.likeTitle,
                 imageRes = state.likeImageRes,
@@ -150,6 +152,7 @@ fun SearchResultScreen(
             )
             Spacer(modifier = Modifier.height(24.dp))
             RelationMbti(
+                modifier = Modifier.padding(horizontal = 16.dp),
                 type = "같이 바캉스 가면 안 맞을 수 있는 유형",
                 title = state.dislikeTitle,
                 imageRes = state.dislikeImageRes,
@@ -242,6 +245,7 @@ fun ShareResultImage(
 
 @Composable
 fun RelationMbti(
+    modifier: Modifier = Modifier,
     type: String,
     title: String,
     imageRes: String,
@@ -249,7 +253,7 @@ fun RelationMbti(
     titleColor: Color = MbtiColor.Green1,
 ) {
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         MbtiBody3(text = type, color = titleColor)

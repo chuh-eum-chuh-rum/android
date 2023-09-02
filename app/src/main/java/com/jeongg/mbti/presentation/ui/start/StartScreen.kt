@@ -20,7 +20,9 @@ import com.jeongg.mbti.presentation.style.MbtiColor
 import com.jeongg.mbti.presentation.style.MbtiTextStyle
 
 @Composable
-fun StartScreen(){
+fun StartScreen(
+    navigateToSelect: () -> Unit,
+){
     Column(
         modifier = Modifier
             .padding(horizontal = 16.dp)
@@ -44,8 +46,7 @@ fun StartScreen(){
             text = "VBTI 알아보러 가기",
             enabled = true
         ) {
-
-            // TODO: navigate
+            navigateToSelect()
         }
     }
 }
