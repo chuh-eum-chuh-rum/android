@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -26,6 +25,7 @@ import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun SelectScreen(
+    index: Int,
     state: SelectState,
     onPrevious: () -> Unit,
     onNextStep: (Int) -> Unit,
@@ -47,11 +47,6 @@ fun SelectScreen(
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            TopBar(
-                onPrevious = onPrevious,
-                maxIndex = state.maxStep,
-                currentIndex = state.step+1,
-            )
             Spacer(modifier = Modifier.height(72.dp))
             AsyncImage(
                 modifier = Modifier.size(160.dp),

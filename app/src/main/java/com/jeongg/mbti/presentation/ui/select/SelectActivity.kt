@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalAnimationApi::class)
+
 package com.jeongg.mbti.presentation.ui.select
 
 import android.os.Bundle
@@ -5,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
@@ -64,6 +67,9 @@ class SelectActivity : ComponentActivity() {
                             state = state,
                             onNextStep = { selectedIndex ->
                                 vm.navigateToNextProblem(selectedIndex)
+                            },
+                            onPrevious = {
+                                vm.minusStep()
                             }
                         )
                     }
