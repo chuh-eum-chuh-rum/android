@@ -42,6 +42,8 @@ import com.jeongg.mbti.presentation.style.MbtiBody9
 import com.jeongg.mbti.presentation.style.MbtiColor
 import com.jeongg.mbti.presentation.style.MbtiTitle1
 import com.jeongg.mbti.presentation.ui.select.component.BackPressedTopBar
+import com.jeongg.mbti.presentation.ui.util.FileUtil
+import com.jeongg.mbti.presentation.ui.util.ShareUtil
 import com.jeongg.mbti.presentation.util.rememberToast
 
 @Composable
@@ -101,7 +103,16 @@ fun SearchResultScreen(
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 LargePrimaryOutlineButton(text = "공유하기", enabled = true) {
-                    toast.invoke("comming soon!")
+                    val bitmap = snapShot.invoke()
+                    val file = FileUtil.imageExternalSave(bitmap)
+                    kotlin.runCatching {
+                        ShareUtil.shareInstagram(
+                            context = context,
+                            path = file,
+                        )
+                    }.onFailure {
+                        toast.invoke("인스타 공유하기에 실패했습니다! ${it.message}")
+                    }
                 }
             }
         }
