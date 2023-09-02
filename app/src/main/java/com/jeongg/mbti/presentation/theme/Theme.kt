@@ -1,4 +1,4 @@
-package com.jeongg.mbti.ui.theme
+package com.jeongg.mbti.presentation.theme
 
 import android.app.Activity
 import android.os.Build
@@ -14,6 +14,12 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.jeongg.mbti.presentation.style.SMonkeyColor.Pink40
+import com.jeongg.mbti.presentation.style.SMonkeyColor.Pink80
+import com.jeongg.mbti.presentation.style.SMonkeyColor.Purple40
+import com.jeongg.mbti.presentation.style.SMonkeyColor.Purple80
+import com.jeongg.mbti.presentation.style.SMonkeyColor.PurpleGrey40
+import com.jeongg.mbti.presentation.style.SMonkeyColor.PurpleGrey80
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
