@@ -49,7 +49,8 @@ import com.jeongg.mbti.presentation.util.rememberToast
 @Composable
 fun SearchResultScreen(
     state: SearchResultState,
-    onPrevious: () -> Unit
+    onPrevious: () -> Unit,
+    onRetry: () -> Unit,
 ) {
     val context = LocalContext.current
     val imageLoader =
@@ -114,6 +115,10 @@ fun SearchResultScreen(
                     }.onFailure {
                         toast.invoke("인스타 공유하기에 실패했습니다! ${it.message}")
                     }
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                LargePrimaryOutlineButton(text = "다시하기", enabled = true) {
+                    onRetry()
                 }
             }
         }
@@ -254,6 +259,7 @@ fun ShareResultImage(
                 MbtiBody7(text = dislikeTitle, color = MbtiColor.Green1)
             }
         }
+        Spacer(modifier = Modifier.height(54.dp))
     }
 }
 

@@ -3,7 +3,6 @@
 package com.jeongg.mbti.presentation.ui.select
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -26,6 +25,7 @@ import com.jeongg.mbti.presentation.ui.result.SearchResultActivity
 import com.jeongg.mbti.presentation.ui.select.component.TopBar
 import com.jeongg.mbti.presentation.ui.util.Extras
 import com.jeongg.mbti.presentation.ui.util.UiEvent
+import com.jeongg.mbti.presentation.util.finishWithAnimation
 import com.jeongg.mbti.presentation.util.rememberToast
 import com.jeongg.mbti.presentation.util.startActivityWithAnimation
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,9 +57,16 @@ class SelectActivity : ComponentActivity() {
 
                             startActivityWithAnimation<SearchResultActivity>(
                                 intentBuilder = {
-                                    putExtra(Extras.ANSWER, event.answer.joinToString(separator = ","))
+                                    putExtra(
+                                        Extras.ANSWER,
+                                        event.answer.joinToString(separator = ",")
+                                    )
                                 }
                             )
+                        }
+
+                        is UiEvent.Finish -> {
+                            finishWithAnimation()
                         }
 
                         else -> {

@@ -7,10 +7,10 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import com.jeongg.mbti.data.util.log
-import com.jeongg.mbti.presentation.ui.util.Extras
+import com.jeongg.mbti.presentation.ui.start.StartActivity
 import com.jeongg.mbti.presentation.ui.util.UiEvent
+import com.jeongg.mbti.presentation.util.changeActivityWithAnimation
 import com.jeongg.mbti.presentation.util.rememberToast
-import com.jeongg.mbti.presentation.util.startActivityWithAnimation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -37,7 +37,10 @@ class SearchResultActivity : ComponentActivity() {
             }
             SearchResultScreen(
                 state = state,
-                onPrevious = {}
+                onPrevious = {},
+                onRetry = {
+                    changeActivityWithAnimation<StartActivity>()
+                }
             )
         }
     }

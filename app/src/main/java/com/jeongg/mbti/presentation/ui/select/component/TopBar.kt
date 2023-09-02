@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jeongg.mbti.R
+import com.jeongg.mbti.presentation.style.MbtiBody3
 import com.jeongg.mbti.presentation.style.MbtiColor
 import com.jeongg.mbti.presentation.util.mbtiClickable
 
@@ -59,7 +60,7 @@ fun TopBar(
                 painter = painterResource(id = R.drawable.ic_back),
                 contentDescription = null,
             )
-            Text(
+            MbtiBody3(
                 text = "${maxIndex}번째 중 ${currentIndex}번째",
                 modifier = Modifier.align(Alignment.Center)
             )
