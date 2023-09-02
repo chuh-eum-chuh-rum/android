@@ -28,6 +28,9 @@
 
         <activity android:name=".presentation.ui.select.SelectActivity"
             android:exported="false" />
+
+        <activity android:name=".presentation.ui.result.SearchResultActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

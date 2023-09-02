@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.jeongg.mbti.presentation.theme.MbtiTheme
+import com.jeongg.mbti.presentation.ui.result.SearchResultActivity
 import com.jeongg.mbti.presentation.ui.select.SelectActivity
 import com.jeongg.mbti.presentation.util.startActivityWithAnimation
 
@@ -18,7 +19,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        navigateToSelect() // FIXME temp
+        navigateToResult() // FIXME temp
 
         setContent {
             MbtiTheme {
@@ -35,6 +36,10 @@ class MainActivity : ComponentActivity() {
 
     private fun navigateToSelect() {
         startActivityWithAnimation<SelectActivity>()
+    }
+
+    private fun navigateToResult() {
+        startActivityWithAnimation<SearchResultActivity>()
     }
 }
 

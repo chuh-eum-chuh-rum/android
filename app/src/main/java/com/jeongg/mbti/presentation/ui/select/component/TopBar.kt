@@ -4,9 +4,8 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
@@ -21,12 +20,32 @@ import com.jeongg.mbti.presentation.style.MbtiColor
 import com.jeongg.mbti.presentation.util.mbtiClickable
 
 @Composable
+fun BackPressedTopBar(
+    onPrevious: () -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 16.dp)
+    ) {
+        Image(
+            modifier = Modifier.mbtiClickable {
+                onPrevious()
+            },
+            painter = painterResource(id = R.drawable.ic_back),
+            contentDescription = null,
+        )
+    }
+}
+
+@Composable
 fun TopBar(
     onPrevious: () -> Unit,
     maxIndex: Int,
     currentIndex: Int,
 ) {
-    val progress = animateFloatAsState(targetValue = currentIndex.toFloat() / maxIndex.toFloat(), label = "")
+    val progress =
+        animateFloatAsState(targetValue = currentIndex.toFloat() / maxIndex.toFloat(), label = "")
     Column {
         Box(
             modifier = Modifier
@@ -40,7 +59,10 @@ fun TopBar(
                 painter = painterResource(id = R.drawable.ic_back),
                 contentDescription = null,
             )
-            Text(text = "${maxIndex}번째 중 ${currentIndex}번째", modifier = Modifier.align(Alignment.Center))
+            Text(
+                text = "${maxIndex}번째 중 ${currentIndex}번째",
+                modifier = Modifier.align(Alignment.Center)
+            )
         }
         LinearProgressIndicator(
             modifier = Modifier.fillMaxWidth(),
@@ -54,5 +76,5 @@ fun TopBar(
 @Preview
 @Composable
 fun PreviewTopBar() {
-    TopBar(onPrevious = {  }, maxIndex = 10, currentIndex = 4)
+    TopBar(onPrevious = { }, maxIndex = 10, currentIndex = 4)
 }
