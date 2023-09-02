@@ -11,10 +11,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.jeongg.mbti.presentation.theme.MbtiTheme
+import com.jeongg.mbti.presentation.ui.select.SelectActivity
+import com.jeongg.mbti.presentation.util.startActivityWithAnimation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        navigateToSelect() // FIXME temp
+
         setContent {
             MbtiTheme {
                 // A surface container using the 'background' color from the theme
@@ -27,7 +32,12 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    private fun navigateToSelect() {
+        startActivityWithAnimation<SelectActivity>()
+    }
 }
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
