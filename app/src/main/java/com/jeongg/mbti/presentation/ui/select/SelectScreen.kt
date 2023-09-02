@@ -18,8 +18,8 @@ import com.jeongg.mbti.presentation.ui.select.component.TopBar
 
 @Composable
 fun SelectScreen(
+    index: Int,
     state: SelectState,
-    onPrevious: () -> Unit,
     onNextStep: (Int) -> Unit,
 ) {
     Column(
@@ -27,11 +27,6 @@ fun SelectScreen(
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        TopBar(
-            onPrevious = onPrevious,
-            maxIndex = state.maxStep,
-            currentIndex = state.step,
-        )
         Spacer(modifier = Modifier.height(72.dp))
         AsyncImage(
             modifier = Modifier.size(160.dp),
