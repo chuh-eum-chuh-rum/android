@@ -213,7 +213,8 @@ fun ShareResultImage(
                 .background(
                     color = MbtiColor.Gray200
                 )
-                .padding(all = 16.dp)
+                .padding(all = 16.dp),
+            contentAlignment = Alignment.Center,
         ) {
             MbtiBody7(
                 text = description,
