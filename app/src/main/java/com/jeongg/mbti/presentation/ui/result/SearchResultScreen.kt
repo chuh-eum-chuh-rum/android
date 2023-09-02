@@ -126,7 +126,7 @@ fun SearchResultScreen(
         ) {
             Spacer(modifier = Modifier.height(16.dp))
             MbtiBody1(text = "당신은", color = MbtiColor.Black)
-            MbtiTitle1(text = "글램퍼 유형", color = MbtiColor.Green1)
+            MbtiTitle1(text = state.title, color = MbtiColor.Green1)
             MbtiBody1(text = "이에요!", color = MbtiColor.Black)
             Spacer(modifier = Modifier.height(32.dp))
             AsyncImage(

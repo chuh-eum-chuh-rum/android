@@ -20,7 +20,7 @@ data class SelectState(
     val maxStep: Int = PROBLEM_TOTAL,
     val step: Int = 0,
     val selectIndex: List<Int> = emptyList(),
-    val answers: List<String> = List(PROBLEM_TOTAL) { "" },
+    val answers: MutableList<String> = MutableList(PROBLEM_TOTAL) { "" },
     val questions: List<QuestionDTO> = emptyList()
 )
 
@@ -69,20 +69,24 @@ class SelectViewModel @Inject constructor(
     }
 
     fun minusStep() {
+        if (currentState.step == 0)
+            return
         _state.update {
             it.copy(step = currentState.step.minus(1))
         }
     }
 
     private fun plusStep() {
+        if (currentState.step == PROBLEM_TOTAL)
+            return
         _state.update {
             it.copy(
                 step = currentState.step.plus(1),
             )
         }
     }
-
     private fun addSelectIndex(selectIndex: Int) {
+
         val newSelectIndex = currentState.selectIndex.toMutableList().apply {
             add(selectIndex)
         }
@@ -96,4 +100,13 @@ class SelectViewModel @Inject constructor(
     fun navigateToResultScreen() {
 
     }
+
+    fun updateAnswer(index: Int) {
+        val step = _state.value.step
+        when(index){
+            1 -> _state.value.answers[step] = _state.value.questions[step].answer1.mbtiType
+            2 -> _state.value.answers[step] = _state.value.questions[step].answer1.mbtiType
+        }
+    }
+
 }

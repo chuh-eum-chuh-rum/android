@@ -61,12 +61,14 @@ fun SelectScreen(
             LargePrimaryButton(
                 text = state.questions[state.step].answer1.name, enabled = true
             ) {
+                viewModel.updateAnswer(1)
                 onNextStep(1)
             }
             Spacer(modifier = Modifier.height(12.dp))
             LargePrimaryOutlineButton(
                 text = state.questions[state.step].answer2.name, enabled = true
             ) {
+                viewModel.updateAnswer(2)
                 onNextStep(2)
             }
             Spacer(modifier = Modifier.height(56.dp))
