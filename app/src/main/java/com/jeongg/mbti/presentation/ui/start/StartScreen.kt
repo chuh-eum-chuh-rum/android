@@ -32,19 +32,19 @@ fun StartScreen(
         verticalArrangement = Arrangement.Center,
     ) {
         Text(
-            text = "내 여행 MBTI는 뭘까?",
+            text = "내 얼레벌레 바캉스 유형을 알아보자!",
             style = MbtiTextStyle.Body1,
             color = MbtiColor.Green1
         )
         Spacer(modifier = Modifier.height(24.dp))
         Image(
             painter = painterResource(R.drawable.ic_3d_fluency_face_with_monocle),
-            contentDescription = "내 여행 MBTI는 뭘까?",
+            contentDescription = "내 얼레벌레 바캉스 유형을 알아보자!",
             modifier = Modifier.size(102.dp)
         )
         Spacer(modifier = Modifier.height(32.dp))
         LargePrimaryButton(
-            text = "VBTI 알아보러 가기",
+            text = "바캉스 유형 알아보러 가기",
             enabled = true
         ) {
             navigateToSelect()

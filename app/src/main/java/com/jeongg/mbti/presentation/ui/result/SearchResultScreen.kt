@@ -152,6 +152,7 @@ fun SearchResultScreen(
                     .padding(all = 16.dp)
             ) {
                 MbtiBody7(
+                    modifier = Modifier.fillMaxWidth(),
                     text = state.description,
                     color = MbtiColor.Gray800,
                     align = TextAlign.Center,
@@ -176,6 +177,7 @@ fun SearchResultScreen(
                 description = state.dislikeDescription,
                 titleColor = MbtiColor.Error,
             )
+            Spacer(modifier = Modifier.height(52.dp))
         }
     }
 }
